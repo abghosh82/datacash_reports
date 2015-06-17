@@ -8,7 +8,7 @@
 namespace DatacashReports;
 
 /**
- * Interface DatacashReportInterface
+ * Interface DatacashReportInterface.
  *
  * @package DatacashReports
  */

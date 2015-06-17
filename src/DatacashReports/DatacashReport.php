@@ -8,7 +8,7 @@
 namespace DatacashReports;
 
 /**
- * Class DatacashReport
+ * Class DatacashReport.
  *
  * @package DatacashReports
  */
