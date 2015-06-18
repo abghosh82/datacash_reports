@@ -18,6 +18,8 @@ interface DatacashReportControllerInterface {
    *
    * @return string
    *   Report in csv format.
+   *
+   * @throws \Exception
    */
   public function download();
 }
