@@ -7,6 +7,9 @@
 
 namespace DatacashReports;
 
+use DatacashReports\Exceptions\InvalidConfiguratorException;
+use DatacashReports\Exceptions\InvalidControllerException;
+
 class DatacashReportManager implements DatacashReportManagerInterface {
   /**
    * Instance of DatacashReportInterface.
@@ -48,7 +51,7 @@ class DatacashReportManager implements DatacashReportManagerInterface {
     // Check if configurator is available, otherwise we cannot proceed ahead
     // and need to throw an Exception
     if (empty($this->configurator)) {
-      throw new \Exception("Datacash Report configurator instance not found.");
+      throw new InvalidConfiguratorException("Datacash Report configurator instance not found.");
     }
     $this->controller = new DatacashReportController($this->configurator);
     return $this->controller;

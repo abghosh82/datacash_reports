@@ -92,6 +92,20 @@ class DatacashReport implements DatacashReportInterface {
   protected $accreditationInstance;
 
   /**
+   * Timeout for the request.
+   *
+   * @var int
+   */
+  protected $timeout;
+
+  /**
+   * Proxy url for the request.
+   *
+   * @var string
+   */
+  protected $proxyUrl;
+
+  /**
    * Sets the end point URL.
    *
    * @param string $end_point
@@ -353,5 +367,56 @@ class DatacashReport implements DatacashReportInterface {
    */
   public function getAccreditationInstance() {
     return $this->accreditationInstance;
+  }
+
+  /**
+   * Sets the timeout for the request.
+   *
+   * @param int $timeout
+   *   Timeout for the request.
+   *
+   * @return DatacashReportInterface
+   *   Instance of DatacashReportInterface.
+   */
+  public function setTimeout($timeout) {
+    $this->timeout = $timeout;
+    return $this;
+  }
+
+  /**
+   * Get the timeout for the request.
+   *
+   * @return int
+   *   Timeout for the request.
+   */
+  public function getTimeout() {
+    if (!empty($this->timeout)) {
+      return $this->timeout;
+    }
+    return self::REQUEST_TIMEOUT;
+  }
+
+  /**
+   * Sets the proxy url for the request.
+   *
+   * @param string $proxy_url
+   *   Proxy url for the request.
+   *
+   * @return DatacashReportInterface
+   *   Instance of DatacashReportInterface.
+   */
+  public function setProxyUrl($proxy_url) {
+    $this->proxyUrl = $proxy_url;
+    return $this;
+  }
+
+  /**
+   * Get the proxy url for the request.
+   *
+   * @return int
+   *   Proxy url for the request.
+   */
+  public function getProxyUrl() {
+    return $this->proxyUrl;
   }
 }

@@ -6,6 +6,7 @@
  */
 
 namespace DatacashReports;
+use DatacashReports\Exceptions\ReportDownloadException;
 
 /**
  * Class DatacashReportController.
@@ -45,27 +46,30 @@ class DatacashReportController implements DatacashReportControllerInterface {
     curl_setopt($handler, CURLOPT_POSTFIELDS, $this->getPostFields());
     curl_setopt($handler, CURLOPT_HTTPHEADER, array('Expect: '));
     curl_setopt($handler, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($handler, CURLOPT_TIMEOUT, 60);
-    if (FALSE) {
-      curl_setopt($handler, CURLOPT_TIMEOUT, 60);
-    }
+    curl_setopt($handler, CURLOPT_TIMEOUT, $this->datacashReport->getTimeout());
     // Set the proxy if specified.
-    if (FALSE) {
+    $proxy_url = $this->datacashReport->getProxyUrl();
+    if (!empty($proxy_url)) {
       curl_setopt($handler, CURLOPT_HTTPPROXYTUNNEL, TRUE);
-      curl_setopt($handler, CURLOPT_PROXY, $this->proxyurl);
+      curl_setopt($handler, CURLOPT_PROXY, $proxy_url);
     }
+
     // Save the response.
     $response = curl_exec($handler);
     $err_no = curl_errno($handler);
     $err_str = curl_error($handler);
 
-    // If there is some error throw an exception.
-    if (!empty($err_no)) {
-      throw new \Exception($err_str);
-    }
-
     // Close the connection.
     curl_close($handler);
+
+    // If there is some curl error throw an exception.
+    if (!empty($err_no)) {
+      throw new ReportDownloadException($err_str);
+    }
+    // If there is no curl error but response has error message.
+    if (strpos($response, 'Error:') == 0) {
+      throw new ReportDownloadException($response);
+    }
 
     return $response;
   }

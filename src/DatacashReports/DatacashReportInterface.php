@@ -14,6 +14,11 @@ namespace DatacashReports;
  */
 interface DatacashReportInterface {
   /**
+   * Timeout for the request.
+   */
+  const REQUEST_TIMEOUT = 60;
+
+  /**
    * Sets the end point URL.
    *
    * @param string $end_point
@@ -221,4 +226,42 @@ interface DatacashReportInterface {
    *   Accreditation instance for the report.
    */
   public function getAccreditationInstance();
+
+  /**
+   * Sets the timeout for the request.
+   *
+   * @param int $timeout
+   *   Timeout for the request.
+   *
+   * @return DatacashReportInterface
+   *   Instance of DatacashReportInterface.
+   */
+  public function setTimeout($timeout);
+
+  /**
+   * Get the timeout for the request.
+   *
+   * @return int
+   *   Timeout for the request.
+   */
+  public function getTimeout();
+
+  /**
+   * Sets the proxy url for the request.
+   *
+   * @param string $proxy_url
+   *   Proxy url for the request.
+   *
+   * @return DatacashReportInterface
+   *   Instance of DatacashReportInterface.
+   */
+  public function setProxyUrl($proxy_url);
+
+  /**
+   * Get the proxy url for the request.
+   *
+   * @return int
+   *   Proxy url for the request.
+   */
+  public function getProxyUrl();
 }
