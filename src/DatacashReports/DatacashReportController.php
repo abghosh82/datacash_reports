@@ -67,7 +67,7 @@ class DatacashReportController implements DatacashReportControllerInterface {
       throw new ReportDownloadException($err_str);
     }
     // If there is no curl error but response has error message.
-    if (strpos($response, 'Error:') == 0) {
+    if (substr($response, 0, 5) == 'Error:') {
       throw new ReportDownloadException($response);
     }
 

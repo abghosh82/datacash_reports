@@ -13,7 +13,11 @@ try {
     ->setEndDate('2015-06-11 23:59:00')
     ->setType('all');
   $response = $manager->getController()->download();
-  echo $response;
+  $response = explode(PHP_EOL, trim($response));
+  foreach ($response as $row) {
+    $response_data[] = str_getcsv($row);
+  }
+  print_r($response_data);
 }
 catch (Exception $e) {
   echo "There was an error in the report download request." . PHP_EOL . $e->getMessage();
