@@ -7,6 +7,7 @@
 
 namespace DatacashReports;
 use DatacashReports\Exceptions\ReportDownloadException;
+use Symfony\Component\Yaml\Yaml;
 
 /**
  * Class DatacashReportController.
@@ -39,6 +40,16 @@ class DatacashReportController implements DatacashReportControllerInterface {
    * @throws \Exception
    */
   public function download() {
+    // Check if stub is enabled.
+    $env_config = YAML::parse(file_get_contents(__DIR__ . "/../../config/environment.yaml"));
+    $report_config = YAML::parse(file_get_contents(__DIR__ . "/../../config/report.yaml"));
+    $report_config = $report_config[$env_config['environment']];
+    if ($report_config['stub'] == 1) {
+      // When stub is enabled provide stub data in the response.
+      $stub_data_csv_file = __DIR__ . "/../../" . $report_config['stub_data_path'];
+      return file_get_contents($stub_data_csv_file);
+    } 
+    
     // Create a curl POST request.
     $handler = curl_init();
     curl_setopt($handler, CURLOPT_URL, $this->datacashReport->getEndPoint());

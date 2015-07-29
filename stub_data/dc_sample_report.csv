@@ -1,0 +1,30 @@
+"vTID","Ref","Type","Amount","Clearinghouse","Currency","Date","Internal reference","Response","Bank response","ReD Response","Settlement date","Card type","Issuing bank","Country of issue","Street Address 1","Street Address 2","Street Address 3","Street Address 4","Postcode","Policy","cv2AVS Respon
+se","3D Secure Registered","Environment"
+"99008734","PPOC-3-9226","auth","12","N/A","USD","28 Jul 2015 12:16:00","4700204397222779","Card country of issue not supported on this tid","No TIDs for card scheme","Not Checked","","Mastercard","Unknown","UNITED KINGDOM","null","null","null","null","null","null","null","n/a","null"
+"99008734","PPOC-2-9045","auth","2","N/A","USD","28 Jul 2015 12:15:32","4000204397222297","Card country of issue not supported on this tid","No TIDs for card scheme","Not Checked","","Maestro","Clydesdale Bank PLC","UNITED KINGDOM","null","null","null","null","null","null","null","n/a","null"
+"99008734","PPOC-2-9045","auth","2","N/A","USD","28 Jul 2015 11:30:29","4800204397202993","Card country of issue not supported on this tid","No TIDs for card scheme","Not Checked","","Maestro","Clydesdale Bank PLC","UNITED KINGDOM","null","null","null","null","null","null","null","n/a","null"
+"99008734","PPOC-3-9226","auth","12","N/A","USD","28 Jul 2015 11:27:18","4400204397201900","Card country of issue not supported on this tid","No TIDs for card scheme","Not Checked","","Mastercard","Unknown","UNITED KINGDOM","null","null","null","null","null","null","null","n/a","null"
+"99008734","PPOC-2-9045","auth","2","N/A","USD","28 Jul 2015 11:24:36","4200204397200421","Card country of issue not supported on this tid","No TIDs for card scheme","Not Checked","","Mastercard","Unknown","UNITED KINGDOM","null","null","null","null","null","null","null","n/a","null"
+"99008734","PPOC-2-9045","auth","2","N/A","USD","28 Jul 2015 11:24:19","4100204397200370","Card country of issue not supported on this tid","No TIDs for card scheme","Not Checked","","Mastercard","Unknown","UNITED KINGDOM","null","null","null","null","null","null","null","n/a","null"
+"99008734","981522369-003","auth","20.00","natwest","GBP","28 Jul 2015 09:48:43","4500204397158958","OK, Settled","765784","Not Checked","29 Jul 2015","Mastercard","Unknown","UNITED KINGDOM","null","null","null","null","null","null","null","n/a","Recurring Txn"
+"99008734","2757030402-003","auth","20.00","natwest","GBP","28 Jul 2015 09:48:43","4400204397158954","OK, Settled","468679","Not Checked","29 Jul 2015","Mastercard","Unknown","UNITED KINGDOM","null","null","null","null","null","null","null","n/a","Recurring Txn"
+"99008734","1096916554-003","auth","20.00","natwest","GBP","28 Jul 2015 09:48:42","4000204397158951","OK, Settled","176702","Not Checked","29 Jul 2015","Mastercard","Unknown","UNITED KINGDOM","null","null","null","null","null","null","null","n/a","Recurring Txn"
+"99008734","531318163-003","auth","20.00","natwest","GBP","28 Jul 2015 09:48:42","4600204397158948","OK, Settled","114668","Not Checked","29 Jul 2015","Mastercard","Unknown","UNITED KINGDOM","null","null","null","null","null","null","null","n/a","Recurring Txn"
+"99008734","2562029434-003","auth","20.00","natwest","GBP","28 Jul 2015 09:48:41","4200204397158945","OK, Settled","211614","Not Checked","29 Jul 2015","Mastercard","Unknown","UNITED KINGDOM","null","null","null","null","null","null","null","n/a","Recurring Txn"
+"99008734","914728434-003","auth","20.00","natwest","GBP","28 Jul 2015 09:48:41","4900204397158942","OK, Settled","183161","Not Checked","29 Jul 2015","Mastercard","Unknown","UNITED KINGDOM","null","null","null","null","null","null","null","n/a","Recurring Txn"
+"99008734","2227223780-003","auth","20.00","natwest","GBP","28 Jul 2015 09:48:40","4900204397158937","OK, Settled","369265","Not Checked","29 Jul 2015","Mastercard","Unknown","UNITED KINGDOM","null","null","null","null","null","null","null","n/a","Recurring Txn"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
