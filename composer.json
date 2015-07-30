@@ -14,12 +14,13 @@
             "DatacashReports" : "src"
         }
     },
-    "require-dev": {
+    "reqiuire-dev": {
         "phpunit/phpunit": "3.7.*"
-    },
-    "require": {
         "symfony/config": "2.*",
         "symfony/dependency-injection": "2.*",
         "symfony/yaml": "2.*"
+    },
+    "require": {
+        "php" : ">=5.3.0"
     }
 }
