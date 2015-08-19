@@ -25,10 +25,13 @@ interface DatacashReportManagerInterface {
   /**
    * Provides an instance of DatacashReportControllerInterface.
    *
+   * @param string $environment
+   *   Environment name.
+   *
    * @return DatacashReportControllerInterface
    *   Instance of DatacashReportControllerInterface.
    *
    * @throws \Exception
    */
-  public function getController();
+  public function getController($environment = NULL);
 }

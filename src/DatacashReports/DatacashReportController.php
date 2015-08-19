@@ -24,11 +24,26 @@ class DatacashReportController implements DatacashReportControllerInterface {
   protected $datacashReport;
 
   /**
+   * Environment name.
+   *
+   * @var string
+   */
+  protected $environment;
+
+  /**
+   * Class constructor.
+   *
    * @param DatacashReportInterface $datacash_report
    *   Instance of DatacashReportInterface.
+   * @param string $environment
+   *   The name of current environment.
    */
-  public function __construct($datacash_report) {
+  public function __construct($datacash_report, $environment = NULL) {
     $this->datacashReport = $datacash_report;
+    // Environment name, possible valid values
+    // can be defined in environment.yaml, and
+    // corresponding configurations in report.yaml.
+    $this->environment = $environment;
   }
 
   /**
@@ -40,10 +55,15 @@ class DatacashReportController implements DatacashReportControllerInterface {
    * @throws \Exception
    */
   public function download() {
+    // Get the configuration.
+    $report_config = $this->getConfig();
+    // If configuration is not available
+    // don't proceed further.
+    if (empty($report_config)) {
+      throw new ReportDownloadException('Invalid configurations, possibly due to wrong environment name.');
+    }
+
     // Check if stub is enabled.
-    $env_config = YAML::parse(file_get_contents(__DIR__ . "/../../config/environment.yaml"));
-    $report_config = YAML::parse(file_get_contents(__DIR__ . "/../../config/report.yaml"));
-    $report_config = $report_config[$env_config['environment']];
     if ($report_config['stub'] == 1) {
       // When stub is enabled provide stub data in the response.
       $stub_data_csv_file = __DIR__ . "/../../" . $report_config['stub_data_path'];
@@ -58,6 +78,7 @@ class DatacashReportController implements DatacashReportControllerInterface {
     curl_setopt($handler, CURLOPT_HTTPHEADER, array('Expect: '));
     curl_setopt($handler, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($handler, CURLOPT_TIMEOUT, $this->datacashReport->getTimeout());
+    curl_setopt($handler, CURLOPT_SSL_VERIFYPEER, FALSE);
     // Set the proxy if specified.
     $proxy_url = $this->datacashReport->getProxyUrl();
     if (!empty($proxy_url)) {
@@ -114,5 +135,22 @@ class DatacashReportController implements DatacashReportControllerInterface {
       $post_fields .= "&instance=$accreditation";
     }
     return $post_fields;
+  }
+
+  /**
+   * Provides the configurations.
+   *
+   * @return array
+   *   An array of config parameters.
+   */
+  protected function getConfig() {
+    // Get environment from environment.yaml config file
+    // when no default environment is available.
+    if (empty($this->environment)) {
+      $env_config = YAML::parse(file_get_contents(__DIR__ . "/../../config/environment.yaml"));
+      $this->environment = $env_config['environment'];
+    }
+    $report_config = YAML::parse(file_get_contents(__DIR__ . "/../../config/report.yaml"));
+    return $report_config[$this->environment];
   }
 }
